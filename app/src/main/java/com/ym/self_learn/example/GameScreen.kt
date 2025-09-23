@@ -16,7 +16,6 @@
 package com.ym.self_learn.example
 
 import android.app.Activity
-import android.util.Log
 import androidx.activity.compose.LocalActivity
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -71,7 +70,6 @@ fun getRandomColor() = Color(
 fun GameScreen(gameViewModel: GameViewModel = viewModel()) {
     val gameUiState by gameViewModel.uiState.collectAsState()
     val mediumPadding = dimensionResource(R.dimen.padding_medium)
-    Log.i("Game", "game screen")
     Column(
         modifier = Modifier
             .statusBarsPadding()
@@ -167,7 +165,6 @@ fun GameLayout(
     onKeyboardDone: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    Log.i("Game", "GameLayout")
     val mediumPadding = dimensionResource(R.dimen.padding_medium)
 
     Card(
@@ -213,7 +210,6 @@ private fun InputUser(
     onUserGuessChanged: (String) -> Unit,
     onKeyboardDone: () -> Unit,
 ) {
-    Log.i("Game", "InputUser")
     OutlinedTextField(
         value = userGuess,
         singleLine = true,
@@ -244,7 +240,6 @@ private fun InputUser(
 
 @Composable
 private fun InputTest(testText: String, onTestTextChanged: (String) -> Unit) {
-    Log.i("Game", "InputTest")
     OutlinedTextField(
         value = testText,
         singleLine = true,

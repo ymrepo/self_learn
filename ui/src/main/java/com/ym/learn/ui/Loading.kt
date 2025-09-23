@@ -16,19 +16,45 @@
 
 package com.ym.learn.ui
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 
 @Composable
-fun Loading(modifier: Modifier = Modifier) {
+fun Loading() {
     Box(
         contentAlignment = Alignment.Center,
-        modifier = modifier.fillMaxSize()
+        modifier = Modifier
+            .fillMaxSize()
+            .background(color = Color(0x60000000))
     ) {
-        CircularProgressIndicator()
+        Box(
+            modifier = Modifier
+                .background(
+                    color = Color.DarkGray,
+                    shape = RoundedCornerShape(5.dp)
+                )
+        ) {
+            CircularProgressIndicator(
+                modifier = Modifier.padding(20.dp),
+                trackColor = Color.White,
+            )
+        }
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PagePhoneScreen() {
+    Loading(
+    )
 }
