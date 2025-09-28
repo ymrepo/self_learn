@@ -30,6 +30,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.VerticalDivider
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
@@ -45,13 +46,27 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.ym.learn.ui.Loading
 import kotlin.random.Random
 
 @Composable
-fun LoginPhoneScreen(loginViewModel: LoginViewModel = viewModel()) {
+fun LoginPhoneScreen(navController: NavController, loginViewModel: LoginViewModel = viewModel()) {
     val state = loginViewModel.loginState.collectAsStateWithLifecycle()
+    Log.i("Login", "LoginPhoneScreen....")
     Scaffold(modifier = Modifier.fillMaxSize()) { paddingValues ->
+        LaunchedEffect(Unit) {
+            loginViewModel.navigationEvent.collect { event ->
+                when (event) {
+                    "home" -> {
+                        navController.navigate("home") {
+                            popUpTo("login") { inclusive = true }
+                        }
+                    }
+                }
+            }
+        }
         LoginPhoneContent(
             isLoading = state.value.isLoading,
             phone = state.value.phone,
@@ -78,6 +93,7 @@ fun LoginPhoneContent(
     var isError by remember { mutableStateOf(false) }
     var countryCode by remember { mutableStateOf("+86") }
     var showHalfCountryScreen by remember { mutableStateOf(false) }
+    val controller = rememberNavController()
 
     Column(
         verticalArrangement = Arrangement.Center,
@@ -120,7 +136,6 @@ fun LoginPhoneContent(
             modifier = Modifier
                 .fillMaxWidth()
         ) {
-            Log.i("Login", "recomposition Button")
             Text(text = "Login")
         }
     }

@@ -6,6 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.ym.discover.DiscoverMain
+import com.ym.learn.home.HomeMain
 import com.ym.learn.login.LoginPhoneScreen
 import com.ym.self_learn.example.GameScreen
 
@@ -13,12 +14,15 @@ import com.ym.self_learn.example.GameScreen
 fun Navigation(navController: NavHostController = rememberNavController()) {
     NavHost(navController = navController, startDestination = "login") {
         composable("login") {
-            LoginPhoneScreen()
+            LoginPhoneScreen(navController)
+        }
+        composable("home") {
+            HomeMain()
         }
         composable("discover") {
             DiscoverMain()
         }
-        composable("example/game"){
+        composable("example/game") {
             GameScreen()
         }
     }
