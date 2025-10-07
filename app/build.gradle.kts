@@ -75,4 +75,5 @@ dependencies {
     implementation(project(":home"))
     implementation(project(":discover"))
     implementation(project(":login"))
+    implementation(project(":base"))
 }

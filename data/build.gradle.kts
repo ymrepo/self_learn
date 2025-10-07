@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.ym.learn.data"
-    compileSdk = 34
+    compileSdk = 35
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17

@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "com.ym.learn.ui"
-    compileSdk = 34
+    compileSdk = 35
 
 
     compileOptions {
