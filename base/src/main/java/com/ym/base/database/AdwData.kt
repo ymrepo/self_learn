@@ -11,6 +11,6 @@ object AdwData {
     private lateinit var datastore: AdwDatastore
 
     fun init(dataFactory: DataFactory){
-        database = dataFactory.cre
+
     }
 }
