@@ -22,39 +22,30 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
 @Composable
-fun Loading() {
+fun Error() {
     Box(
         contentAlignment = Alignment.Center,
         modifier = Modifier
             .fillMaxSize()
-            .background(color = Color(0x60000000))
+            .background(color = Color(0xffffff))
     ) {
-        Box(
-            modifier = Modifier
-                .background(
-                    color = Color.DarkGray,
-                    shape = RoundedCornerShape(5.dp)
-                )
-        ) {
-            CircularProgressIndicator(
-                modifier = Modifier.padding(20.dp),
-                trackColor = Color.White,
-            )
-        }
+        Text("error page", color = Color.DarkGray, fontSize = 16.sp)
     }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun PagePhoneScreen() {
-    Loading(
+fun ErrorScreen() {
+    Error(
     )
 }

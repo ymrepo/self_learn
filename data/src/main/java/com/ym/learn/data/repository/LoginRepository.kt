@@ -7,7 +7,6 @@ import kotlinx.coroutines.withContext
 
 
 class LoginRepository {
-    //        return Gson().fromJson(result.body?.string(), LoginResult::class.java)
     suspend fun login(phone: String): String =
         withContext(Dispatchers.IO) {
             val client = OkHttpSingleton.client
