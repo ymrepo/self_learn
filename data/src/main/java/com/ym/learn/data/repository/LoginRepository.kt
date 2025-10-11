@@ -1,18 +1,28 @@
 package com.ym.learn.data.repository
 
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.ym.learn.data.http.OkHttpSingleton
 import com.ym.learn.data.http.OkHttpSingleton.BASE_URL
+import com.ym.learn.data.model.BaseResponse
+import com.ym.learn.data.model.People
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 
 class LoginRepository {
-    suspend fun login(phone: String): String =
+    suspend fun login(phone: String): BaseResponse<People>? =
         withContext(Dispatchers.IO) {
             val client = OkHttpSingleton.client
             val request = okhttp3.Request.Builder().url("${BASE_URL}people/1/").build()
             val call = client.newCall(request)
-            val result = call.execute()
-            return@withContext result.body?.string() ?: ""
+            runCatching { call.execute() }.onSuccess { action ->
+                val body = action.body?.string()
+                val type = object : TypeToken<BaseResponse<People>>() {}.type
+                return@withContext Gson().fromJson(body, type)
+            }.onFailure { action ->
+                return@withContext null
+            }
+            return@withContext null
         }
 }

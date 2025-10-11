@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.ym.learn.discover"
+    namespace = "com.ym.learn.rewards"
     compileSdk = 35
 
     compileOptions {

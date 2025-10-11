@@ -10,15 +10,21 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 class HomeRepository {
-    suspend fun getPeople(page: Int): BaseResponse<List<People>> =
+    suspend fun getPeople(page: Int): BaseResponse<List<People>>? =
         withContext(Dispatchers.IO) {
             val client = OkHttpSingleton.client
             val request = okhttp3.Request.Builder().url("${BASE_URL}planets/?page=$page").build()
             val call = client.newCall(request)
-            val result = call.execute()
-            val body = result.body?.string()
-            val type = object : TypeToken<BaseResponse<List<People>>>() {}.type
-            val base: BaseResponse<List<People>> = Gson().fromJson(body, type)
-            return@withContext base
+            runCatching {
+                call.execute()
+            }.onSuccess { result ->
+                val body = result.body?.string()
+                val type = object : TypeToken<BaseResponse<List<People>>>() {}.type
+                val base: BaseResponse<List<People>> = Gson().fromJson(body, type)
+                return@withContext base
+            }.onFailure {
+                return@withContext null
+            }
+            return@withContext null
         }
 }

@@ -60,7 +60,7 @@ fun LoginPhoneScreen(navController: NavController, loginViewModel: LoginViewMode
             loginViewModel.navigationEvent.collect { event ->
                 when (event) {
                     "home" -> {
-                        navController.navigate("home") {
+                        navController.navigate("main") {
                             popUpTo("login") { inclusive = true }
                         }
                     }

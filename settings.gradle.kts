@@ -22,8 +22,7 @@ dependencyResolutionManagement {
 rootProject.name = "self_learn"
 include(":app")
 include(":home")
-include(":discover")
-include(":discover")
+include(":rewards")
 include(":data")
 include(":login")
 include(":ui")

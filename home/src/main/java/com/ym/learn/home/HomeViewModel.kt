@@ -4,17 +4,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ym.learn.data.model.People
 import com.ym.learn.data.repository.HomeRepository
-import com.ym.learn.data.repository.LoginRepository
-import com.ym.learn.ui.Loading
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.flow.asFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlin.random.Random
+import kotlin.random.nextInt
 
 class HomeViewModel : ViewModel() {
 
@@ -23,17 +19,22 @@ class HomeViewModel : ViewModel() {
         MutableStateFlow<HomeUiState>(HomeUiState.Loading())
     val peopleStateFlow: StateFlow<HomeUiState> =
         _peopleStateFlow.asStateFlow()
-
-    private val peoples = mutableListOf<People>()
+    private val peoples = arrayListOf<People>()
 
     fun getPeople(page: Int) {
         viewModelScope.launch {
+            _peopleStateFlow.emit(HomeUiState.Success(isRefreshing = true))
             val result = myModelRepository.getPeople(page)
-            if (result.results?.isNotEmpty() == true) {
+            if (result?.results?.isNotEmpty() == true) {
                 if (page == 1) {
                     peoples.clear()
                     peoples.addAll(result.results ?: arrayListOf())
-                    _peopleStateFlow.emit(HomeUiState.Success(peoples = peoples))
+                    _peopleStateFlow.emit(
+                        HomeUiState.Success(
+                            isRefreshing = false,
+                            peoples = peoples
+                        )
+                    )
                 } else {
                     peoples.addAll(result.results ?: arrayListOf())
                     _peopleStateFlow.emit(HomeUiState.Success(peoples = peoples))
@@ -42,16 +43,20 @@ class HomeViewModel : ViewModel() {
         }
     }
 
-    fun refreshWithLoading() {
+    fun refreshWithLoading(page: Int) {
         viewModelScope.launch {
             _peopleStateFlow.emit(HomeUiState.Loading(isLoading = true))
-            val result = myModelRepository.getPeople(1)
+            val result = myModelRepository.getPeople(page)
             _peopleStateFlow.emit(HomeUiState.Loading(isLoading = false))
-            if (result.results?.isNotEmpty() == true) {
+            if (result?.results?.isNotEmpty() == true) {
+                if(page==1){
+                    peoples.clear()
+                }
+                peoples.addAll(result.results ?: arrayListOf())
                 _peopleStateFlow.emit(
                     HomeUiState.Success(
-                        peoples = result.results,
-                        hasMore = result.count > 10
+                        peoples = peoples,
+                        hasMore = peoples.size > 10
                     )
                 )
             } else {
@@ -65,8 +70,8 @@ sealed class HomeUiState {
     data class Success(
         val peoples: List<People>? = null,
         val isLoading: Boolean = false,
-        val isRefreshing: Boolean = false,
         val isSuccess: Boolean = false,
+        val isRefreshing: Boolean = false,
         val hasMore: Boolean = true
     ) : HomeUiState()
 

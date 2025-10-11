@@ -15,7 +15,7 @@ class LoginViewModel : ViewModel() {
 
     private val myModelRepository: LoginRepository = LoginRepository()
     private val _loginState =
-        MutableStateFlow<LoginUiState>(LoginUiState())
+        MutableStateFlow(LoginUiState())
     val loginState: StateFlow<LoginUiState> =
         _loginState.asStateFlow()
 

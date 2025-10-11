@@ -1,29 +1,41 @@
 package com.ym.self_learn
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.ym.discover.DiscoverMain
-import com.ym.learn.home.HomeMain
+import androidx.navigation.navigation
 import com.ym.learn.login.LoginPhoneScreen
-import com.ym.self_learn.example.GameScreen
 
 @Composable
-fun Navigation(navController: NavHostController = rememberNavController()) {
-    NavHost(navController = navController, startDestination = "login") {
-        composable("login") {
-            LoginPhoneScreen(navController)
+fun Navigation(navController: NavHostController = rememberNavController(), isLoggedIn: Boolean) {
+    NavHost(
+        startDestination = if (isLoggedIn) "main" else "login",
+        navController = navController,
+        modifier = Modifier,
+    ) {
+        navigation(
+            startDestination = "loginPhone",
+            route = "login"
+        ) {
+            composable("loginPhone") {
+                LoginPhoneScreen(navController)
+            }
+            composable("loginPin") {
+                LoginPhoneScreen(navController)
+            }
         }
-        composable("home") {
-            HomeMain()
+
+        navigation(
+            startDestination = "tabs",
+            route = "main"
+        ) {
+            composable("tabs") {
+                MainScreen()
+            }
         }
-        composable("discover") {
-            DiscoverMain()
-        }
-        composable("example/game") {
-            GameScreen()
-        }
+
     }
 }
