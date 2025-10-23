@@ -22,7 +22,7 @@ class HomeRepository {
                 val type = object : TypeToken<BaseResponse<List<People>>>() {}.type
                 val base: BaseResponse<List<People>> = Gson().fromJson(body, type)
                 return@withContext base
-            }.onFailure {
+            }.onFailure {throwable->
                 return@withContext null
             }
             return@withContext null

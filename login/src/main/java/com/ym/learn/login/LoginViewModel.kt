@@ -3,6 +3,7 @@ package com.ym.learn.login
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ym.learn.data.repository.LoginRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -10,10 +11,13 @@ import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class LoginViewModel : ViewModel() {
+@HiltViewModel
+class LoginViewModel @Inject constructor(
+    private val loginRepository: LoginRepository,
+) : ViewModel() {
 
-    private val myModelRepository: LoginRepository = LoginRepository()
     private val _loginState =
         MutableStateFlow(LoginUiState())
     val loginState: StateFlow<LoginUiState> =
@@ -32,7 +36,7 @@ class LoginViewModel : ViewModel() {
     fun login(phone: String) {
         viewModelScope.launch {
             _loginState.update { it.copy(isLoading = true) }
-            val result = myModelRepository.login(phone)
+            val result = loginRepository.login(phone)
             _loginState.update { it.copy(isLoading = false, isSuccess = true) }
             _navigationEvent.emit("home")
         }

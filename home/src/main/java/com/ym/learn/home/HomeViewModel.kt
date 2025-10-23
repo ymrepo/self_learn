@@ -6,11 +6,8 @@ import com.ym.learn.data.model.People
 import com.ym.learn.data.repository.HomeRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import kotlin.random.Random
-import kotlin.random.nextInt
 
 class HomeViewModel : ViewModel() {
 
