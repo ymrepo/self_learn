@@ -10,7 +10,8 @@ activityCompose = "1.10.1"
 composeBom = "2024.04.01"
 androidxNavigation = "2.5.3"
 androidxHiltNavigation = "1.0.0"
-hilt = "2.51.1"
+hilt = "2.57.1"
+ksp = "2.0.0-1.0.24"
 
 androidx-splash = "1.0.1"
 okhttp3 = "4.9.3"
@@ -41,10 +42,6 @@ androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
 
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "androidxNavigation" }
-androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "androidxHiltNavigation" }
-hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
-hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt" }
-
 androidx-splash = { group = "androidx.core", name = "core-splashscreen", version.ref = "androidx-splash" }
 okhttp3 = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp3" }
 gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
@@ -66,7 +63,7 @@ android-library = { id = "com.android.library", version.ref = "agp" }
 #kotlin-gradle-plugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
-kapt-plugin = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 android-hilt-plugin = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 
 

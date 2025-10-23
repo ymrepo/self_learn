@@ -14,8 +14,6 @@ import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
-
-
 class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,7 +28,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             Self_learnTheme {
-                Navigation(navController = rememberNavController(), isLoggedIn = true)
+                Navigation(navController = rememberNavController(), isLoggedIn = false)
             }
         }
     }
