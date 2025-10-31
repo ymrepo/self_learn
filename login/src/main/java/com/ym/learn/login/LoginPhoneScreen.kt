@@ -249,3 +249,8 @@ fun HalfCountrySheet() {
         onItemListener = { value, index -> }
     )
 }
+
+@Composable
+fun TestComposable() {
+    Text(text = "test")
+}

@@ -2,14 +2,19 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.roborazzi)
     id("com.google.devtools.ksp")
     id("com.google.dagger.hilt.android")
 }
 
 android {
     namespace = "com.ym.learn.login"
-    compileSdk = 34
-
+    compileSdk = 36
+    testOptions.unitTests.isIncludeAndroidResources = true
+    defaultConfig {
+        minSdk = 24
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
@@ -38,8 +43,16 @@ dependencies {
     ksp("com.google.dagger:hilt-android-compiler:2.57.1")
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
 
-
+//    testImplementation("com.google.dagger:hilt-android-testing:2.57.1")
+    testImplementation(libs.androidx.compose.ui.test)
+    debugImplementation(libs.androidx.ui.test.manifest)
+    testImplementation(libs.androidx.junit)
+    testImplementation(libs.robolectric)
+    testImplementation(libs.roborazzi)
+//    androidTestImplementation("androidx.test:runner:1.5.2")
+//    androidTestImplementation("androidx.test:rules:1.5.2")
 
     implementation(project(":data"))
     implementation(project(":ui"))
+    testImplementation(project(":screenshot-testing"))
 }

@@ -2,16 +2,25 @@ package com.ym.learn.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.ym.learn.data.di.NormalUser
+import com.ym.learn.data.di.VipUser
 import com.ym.learn.data.model.People
 import com.ym.learn.data.repository.HomeRepository
+import com.ym.learn.data.repository.user.IUserRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import jakarta.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-class HomeViewModel : ViewModel() {
+@HiltViewModel
+class HomeViewModel @Inject constructor(
+    val myModelRepository: HomeRepository,
+    @NormalUser val userRepository: IUserRepository,
+    @VipUser val vipUserRepo: IUserRepository,
+) : ViewModel() {
 
-    private val myModelRepository: HomeRepository = HomeRepository()
     private val _peopleStateFlow =
         MutableStateFlow<HomeUiState>(HomeUiState.Loading())
     val peopleStateFlow: StateFlow<HomeUiState> =
@@ -32,6 +41,7 @@ class HomeViewModel : ViewModel() {
                             peoples = peoples
                         )
                     )
+
                 } else {
                     peoples.addAll(result.results ?: arrayListOf())
                     _peopleStateFlow.emit(HomeUiState.Success(peoples = peoples))
@@ -43,10 +53,11 @@ class HomeViewModel : ViewModel() {
     fun refreshWithLoading(page: Int) {
         viewModelScope.launch {
             _peopleStateFlow.emit(HomeUiState.Loading(isLoading = true))
+            userRepository.saveUser()
             val result = myModelRepository.getPeople(page)
             _peopleStateFlow.emit(HomeUiState.Loading(isLoading = false))
             if (result?.results?.isNotEmpty() == true) {
-                if(page==1){
+                if (page == 1) {
                     peoples.clear()
                 }
                 peoples.addAll(result.results ?: arrayListOf())
@@ -57,6 +68,7 @@ class HomeViewModel : ViewModel() {
                     )
                 )
             } else {
+                vipUserRepo.saveUser()
                 _peopleStateFlow.emit(HomeUiState.Error())
             }
         }

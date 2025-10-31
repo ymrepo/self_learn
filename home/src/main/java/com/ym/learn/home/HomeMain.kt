@@ -20,8 +20,8 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.ym.learn.data.model.People
 import com.ym.learn.ui.Error
 import com.ym.learn.ui.Loading
@@ -29,7 +29,7 @@ import kotlinx.coroutines.launch
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
-fun HomeMain(viewModel: HomeViewModel = viewModel()) {
+fun HomeMain(viewModel: HomeViewModel = hiltViewModel<HomeViewModel>()) {
     val state = viewModel.peopleStateFlow.collectAsStateWithLifecycle()
     val scope = rememberCoroutineScope()
     LaunchedEffect(Unit) {
