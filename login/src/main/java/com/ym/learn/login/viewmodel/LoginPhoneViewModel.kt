@@ -1,4 +1,4 @@
-package com.ym.learn.login
+package com.ym.learn.login.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -38,7 +38,7 @@ class LoginViewModel @Inject constructor(
             _loginState.update { it.copy(isLoading = true) }
             val result = loginRepository.login(phone)
             _loginState.update { it.copy(isLoading = false, isSuccess = true) }
-            _navigationEvent.emit("home")
+            _navigationEvent.emit("success")
         }
     }
 }

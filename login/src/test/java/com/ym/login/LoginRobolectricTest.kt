@@ -6,7 +6,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import com.google.samples.apps.nowinandroid.core.testing.util.captureMultiDevice
 import com.ym.learn.login.LoginPhoneContent
-import com.ym.self_learn.ui.theme.Self_learnTheme
+import com.ym.learn.ui.theme.Self_learnTheme
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith

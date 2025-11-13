@@ -1,4 +1,4 @@
-package com.ym.self_learn.ui.theme
+package com.ym.learn.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

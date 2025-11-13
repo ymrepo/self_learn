@@ -48,8 +48,8 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.ym.learn.login.viewmodel.LoginViewModel
 import com.ym.learn.ui.Loading
-import kotlin.random.Random
 
 @Composable
 fun LoginPhoneScreen(
@@ -62,9 +62,9 @@ fun LoginPhoneScreen(
         LaunchedEffect(Unit) {
             loginViewModel.navigationEvent.collect { event ->
                 when (event) {
-                    "home" -> {
-                        navController.navigate("main") {
-                            popUpTo("login") { inclusive = true }
+                    "success" -> {
+                        navController.navigate("loginPin") {
+                            popUpTo("loginPhone") { inclusive = false }
                         }
                     }
                 }
@@ -139,7 +139,7 @@ fun LoginPhoneContent(
             modifier = Modifier
                 .fillMaxWidth()
         ) {
-            Text(text = "Login")
+            Text(text = "Continue")
         }
     }
 
@@ -155,11 +155,6 @@ fun LoginPhoneContent(
         Loading()
     }
 }
-
-fun getRandomColor() = Color(
-    red = Random.nextInt(256), green = Random.nextInt(256), blue = Random.nextInt(256), alpha = 255
-)
-
 
 @Composable
 fun PhoneLeadIcon(country: String, onClick: () -> Unit) {

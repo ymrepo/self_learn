@@ -8,6 +8,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navigation
 import com.ym.learn.login.LoginPhoneScreen
+import com.ym.learn.login.LoginPinPage
 
 @Composable
 fun Navigation(navController: NavHostController = rememberNavController(), isLoggedIn: Boolean) {
@@ -24,7 +25,7 @@ fun Navigation(navController: NavHostController = rememberNavController(), isLog
                 LoginPhoneScreen(navController)
             }
             composable("loginPin") {
-                LoginPhoneScreen(navController)
+                LoginPinPage(navController)
             }
         }
 
