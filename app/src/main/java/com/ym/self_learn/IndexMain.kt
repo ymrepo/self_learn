@@ -4,8 +4,11 @@ import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBarsPadding
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -27,6 +30,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.ym.learn.home.HomeMain
 import com.ym.learn.home.R
+import com.ym.learn.player.GlobalAudioPlayer
 import com.ym.learn.rewards.RewardsMain
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -91,11 +95,12 @@ fun MainScreen() {
     ) { innerPadding ->
         Log.i("padding", "$innerPadding")
         Box(
-            modifier = Modifier
+            modifier = Modifier.fillMaxSize()
         ) {
             NavHost(
                 navController = innerNavController,
                 startDestination = Screens.Home.route,
+
 
                 ) {
                 composable(Screens.Home.route) {
@@ -103,6 +108,13 @@ fun MainScreen() {
                 }
                 composable(Screens.Rewards.route) { RewardsMain() }
             }
+            GlobalAudioPlayer(
+                "http://downsc.chinaz.net/Files/DownLoad/sound1/201906/11582.mp3", "title",
+                modifier = Modifier
+                    .align(Alignment.BottomEnd)
+                    .padding(bottom = 50.dp)
+                    .fillMaxWidth(),
+            )
         }
 
     }

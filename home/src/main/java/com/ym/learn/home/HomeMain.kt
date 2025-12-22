@@ -1,12 +1,16 @@
 package com.ym.learn.home
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.Scaffold
@@ -17,6 +21,7 @@ import androidx.compose.material3.pulltorefresh.rememberPullToRefreshState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.dp
@@ -56,7 +61,7 @@ fun HomeMain(viewModel: HomeViewModel = hiltViewModel<HomeViewModel>()) {
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
 fun MainContent(
     modifier: Modifier,
@@ -74,11 +79,22 @@ fun MainContent(
         modifier = modifier
     ) {
         Column {
-            Box(
+            val pagerState = rememberPagerState(pageCount = { items.size })
+            HorizontalPager(
+                state = pagerState,
                 modifier = Modifier
                     .height(200.dp)
-                    .background(color = colorResource(R.color.yellow))
-            )
+                    .fillMaxWidth()
+            ) { page ->
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(color = colorResource(if (page % 2 == 0) R.color.yellow else R.color.purple_200)),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(text = items[page].name)
+                }
+            }
             LazyColumn(Modifier.fillMaxSize()) {
                 items(items.size, key = { index -> items[index].name }) { index ->
                     ListItem({ Text(text = "item:${items[index].name}") })
@@ -87,4 +103,3 @@ fun MainContent(
         }
     }
 }
-

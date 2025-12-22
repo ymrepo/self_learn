@@ -43,6 +43,18 @@ dependencies {
     ksp("com.google.dagger:hilt-android-compiler:2.57.1")
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
 
+    // Media3 核心库
+    implementation("androidx.media3:media3-exoplayer:1.3.1")
+    // 用于在 Compose 中集成 Media3 的 UI 控件
+    implementation("androidx.media3:media3-ui:1.3.1")
+    // Media3 与 Compose 集成
+    implementation("androidx.media3:media3-session:1.3.1")
+    // 可选：用于控制音频焦点等
+    implementation("androidx.media3:media3-common:1.3.1")
+
+    // ... 您其他的依赖项
+    implementation("androidx.compose.material:material-icons-extended:1.7.4")
+
     // 可选：如果使用 pillarbox-ui 这个 Compose 封装库
     // implementation("ch.srgssr.pillarbox:pillarbox-ui:<pillarbox_version>")
 

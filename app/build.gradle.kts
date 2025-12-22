@@ -61,7 +61,6 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
-    androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.tooling)
 
@@ -69,4 +68,5 @@ dependencies {
     implementation(project(":home"))
     implementation(project(":rewards"))
     implementation(project(":login"))
+    implementation(project(":player"))
 }
