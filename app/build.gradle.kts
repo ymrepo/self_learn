@@ -66,6 +66,7 @@ dependencies {
 
     //project
     implementation(project(":home"))
+    implementation(project(":qr"))
     implementation(project(":rewards"))
     implementation(project(":login"))
     implementation(project(":player"))

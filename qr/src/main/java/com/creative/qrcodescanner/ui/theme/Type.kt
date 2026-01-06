@@ -6,7 +6,7 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
-import com.creative.qrcodescanner.R
+import com.ym.learn.qr.R
 
 val appFontFamily = FontFamily(
     Font(R.font.roboto_regular, FontWeight.Normal),

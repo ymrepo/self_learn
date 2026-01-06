@@ -6,7 +6,6 @@ import android.net.Uri
 import androidx.compose.runtime.Stable
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.creative.qrcodescanner.R
 import com.creative.qrcodescanner.data.entity.QRCodeContact
 import com.creative.qrcodescanner.data.entity.QRCodePhone
 import com.creative.qrcodescanner.data.entity.QRCodeSMS
@@ -19,6 +18,7 @@ import com.creative.qrcodescanner.usecase.history.InsertQRCodeHistoryFlowUseCase
 import com.creative.qrcodescanner.usecase.setting.UpdateKeepScanningSettingUseCase
 import com.google.mlkit.vision.barcode.common.Barcode
 import com.squareup.moshi.Moshi
+import com.ym.learn.qr.R
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.MutableSharedFlow

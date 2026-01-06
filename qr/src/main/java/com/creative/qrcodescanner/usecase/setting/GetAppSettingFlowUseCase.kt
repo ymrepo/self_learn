@@ -1,14 +1,13 @@
 package com.creative.qrcodescanner.usecase.setting
 
 import android.content.Context
-import com.creative.qrcodescanner.BuildConfig
-import com.creative.qrcodescanner.R
 import com.creative.qrcodescanner.data.entity.UserSettingData
 import com.creative.qrcodescanner.repo.user.UserDataRepo
 import com.creative.qrcodescanner.ui.setting.ListSettingUIState
 import com.creative.qrcodescanner.ui.setting.SettingId
 import com.creative.qrcodescanner.ui.setting.SettingItemUIState
 import com.creative.qrcodescanner.usecase.base.BaseFlowUseCase
+import com.ym.learn.qr.R
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.flow.Flow

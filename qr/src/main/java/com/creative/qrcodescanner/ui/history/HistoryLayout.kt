@@ -2,8 +2,6 @@ package com.creative.qrcodescanner.ui.history
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.animateContentSize
-import androidx.compose.animation.core.EaseInOutBack
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
@@ -47,10 +45,10 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
-import com.creative.qrcodescanner.R
 import com.creative.qrcodescanner.ui.nav.TopNavBar
 import com.creative.qrcodescanner.ui.shadow
 import com.creative.qrcodescanner.usecase.history.QRCodeHistoryUIState
+import com.ym.learn.qr.R
 
 /**
  * Created by dan on 07/01/2024

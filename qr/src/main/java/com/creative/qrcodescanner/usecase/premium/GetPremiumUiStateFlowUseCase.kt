@@ -1,13 +1,13 @@
 package com.creative.qrcodescanner.usecase.premium
 
 import android.content.Context
-import com.creative.qrcodescanner.R
 import com.creative.qrcodescanner.ui.premium.PremiumBenefitItem
 import com.creative.qrcodescanner.ui.premium.PremiumPurchaseItem
 import com.creative.qrcodescanner.ui.premium.PremiumPurchaseType
 import com.creative.qrcodescanner.ui.premium.PremiumUiState
 import com.creative.qrcodescanner.ui.premium.PremiumViewModel
 import com.creative.qrcodescanner.usecase.base.BaseFlowUseCase
+import com.ym.learn.qr.R
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.flow.Flow
@@ -28,7 +28,7 @@ class GetPremiumUiStateFlowUseCase @Inject constructor(
         return flow {
             emit(
                 PremiumUiState.Loaded(
-                    applicationContext.getString(R.string.app_name),
+                    "qr nmodule",
                     listOf(
                         PremiumBenefitItem(applicationContext.getString(R.string.no_advertising), R.drawable.icon_verified),
                         PremiumBenefitItem(applicationContext.getString(R.string.prevent_duplicate_in_history), R.drawable.icon_document),

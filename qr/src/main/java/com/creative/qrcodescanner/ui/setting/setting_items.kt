@@ -29,7 +29,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.creative.qrcodescanner.R
+import com.ym.learn.qr.R
 
 /**
  * Created by dan on 28/01/2024
@@ -63,7 +63,7 @@ fun SettingSwitchItem(modifier: Modifier = Modifier, settingItem: SettingItemUIS
             thumbContent = {
                 Image(
                     painter = painterResource(id = R.drawable.icon_qr),
-                    contentDescription = stringResource(id = R.string.app_name),
+                    contentDescription = "",
                     modifier = Modifier
                         .size(28.dp)
                         .background(
@@ -97,7 +97,7 @@ fun SettingTextItem(modifier: Modifier = Modifier, settingItem: SettingItemUISta
     ) {
         Image(
             painter = painterResource(id = settingItem.iconRes),
-            contentDescription = stringResource(id = R.string.app_name),
+            contentDescription = "",
             modifier = Modifier
                 .size(28.dp)
                 .align(Alignment.CenterVertically)

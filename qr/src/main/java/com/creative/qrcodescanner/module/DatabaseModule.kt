@@ -1,4 +1,4 @@
-package com.creative.qrcodescanner.di.module
+package com.creative.qrcodescanner.module
 
 import android.content.Context
 import com.creative.qrcodescanner.data.QRAppDatabase

@@ -7,7 +7,10 @@ plugins {
 android {
     namespace = "com.ym.learn.rewards"
     compileSdk = 35
-
+    defaultConfig {
+        minSdk = 24
+        targetSdk = 34
+    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17

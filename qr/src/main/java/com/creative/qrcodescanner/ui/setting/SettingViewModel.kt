@@ -3,16 +3,15 @@ package com.creative.qrcodescanner.ui.setting
 import android.content.Context
 import androidx.annotation.DrawableRes
 import androidx.compose.runtime.Stable
-import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.creative.qrcodescanner.R
 import com.creative.qrcodescanner.repo.user.UserDataRepo
 import com.creative.qrcodescanner.usecase.setting.GetAppSettingFlowUseCase
 import com.creative.qrcodescanner.usecase.setting.UpdateKeepScanningSettingUseCase
 import com.creative.qrcodescanner.usecase.setting.UpdatePremiumSettingUseCase
 import com.creative.qrcodescanner.usecase.setting.UpdateSoundSettingUseCase
 import com.creative.qrcodescanner.usecase.setting.UpdateVibrateSettingUseCase
+import com.ym.learn.qr.R
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.MutableSharedFlow

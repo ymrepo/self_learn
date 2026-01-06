@@ -1,4 +1,4 @@
-package com.creative.qrcodescanner.di.module
+package com.creative.qrcodescanner.module
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences

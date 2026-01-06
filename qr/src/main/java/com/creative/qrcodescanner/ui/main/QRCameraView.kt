@@ -41,9 +41,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
-import com.creative.qrcodescanner.R
 import com.creative.qrcodescanner.data.entity.UserSettingData
 import com.creative.qrcodescanner.ui.theme.seed
+import com.ym.learn.qr.R
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -212,7 +212,7 @@ fun QRCameraView(lifecycleCameraController: LifecycleCameraController,
                 }, thumbContent = {
                     Image(
                         painter = painterResource(id = R.drawable.icon_qr),
-                        contentDescription = stringResource(id = R.string.app_name),
+                        contentDescription =" stringResource(id = R.string.app_name)",
                         modifier = Modifier
                             .size(28.dp)
                             .background(

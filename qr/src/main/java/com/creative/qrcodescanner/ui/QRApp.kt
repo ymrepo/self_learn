@@ -1,9 +1,12 @@
 package com.creative.qrcodescanner.ui
 
+import android.content.ClipboardManager
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
 import android.provider.ContactsContract
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -16,7 +19,6 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.creative.qrcodescanner.R
 import com.creative.qrcodescanner.ui.history.HistoryScreenLayout
 import com.creative.qrcodescanner.ui.main.MainScreenLayout
 import com.creative.qrcodescanner.ui.main.MainViewModel
@@ -26,7 +28,9 @@ import com.creative.qrcodescanner.ui.result.QRCodeResultLayout
 import com.creative.qrcodescanner.ui.setting.SettingScreenLayout
 import com.google.mlkit.vision.barcode.BarcodeScanning
 import com.google.mlkit.vision.common.InputImage
+import com.ym.learn.qr.R
 
+@RequiresApi(Build.VERSION_CODES.HONEYCOMB)
 @Composable
 fun QRApp(vm: MainViewModel = hiltViewModel(),
           appNavHost: NavHostController = rememberNavController()) {
@@ -64,7 +68,7 @@ fun QRApp(vm: MainViewModel = hiltViewModel(),
                 is QRCodeAction.CopyText -> {
                     val copyText = it.text
                     if (copyText.isNotEmpty()) {
-                        val clipboard = context.getSystemService(android.content.Context.CLIPBOARD_SERVICE) as android.content.ClipboardManager
+                        val clipboard = context.getSystemService(android.content.Context.CLIPBOARD_SERVICE) as ClipboardManager
                         val clip = android.content.ClipData.newPlainText("Copied Text", copyText)
                         clipboard.setPrimaryClip(clip)
                         Toast.makeText(context, context.resources.getString(R.string.copied_to_clipboard, copyText), Toast.LENGTH_SHORT).show()

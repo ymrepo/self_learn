@@ -23,9 +23,8 @@ import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.creative.qrcodescanner.R
 import com.creative.qrcodescanner.ui.shadow
-
+import com.ym.learn.qr.R
 /**
  * Created by dan on 21/01/2024
  *

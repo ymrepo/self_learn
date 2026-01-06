@@ -27,7 +27,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.creative.qrcodescanner.R
+import com.ym.learn.qr.R
 import com.creative.qrcodescanner.ui.shadow
 import com.creative.qrcodescanner.ui.theme.QRCodeScannerTheme
 import com.creative.qrcodescanner.usecase.history.QRCodeItemUIState

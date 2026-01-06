@@ -1,9 +1,8 @@
-package com.creative.qrcodescanner.di.module
+package com.creative.qrcodescanner.module
 
 import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
-import com.creative.qrcodescanner.data.entity.UserSettingData
 import com.creative.qrcodescanner.data.entity.userSettingPreferences
 import com.squareup.moshi.Moshi
 import dagger.Module

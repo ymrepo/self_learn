@@ -9,7 +9,10 @@ plugins {
 android {
     namespace = "com.ym.learn.qr"
     compileSdk = 35
-
+    defaultConfig {
+        minSdk = 24
+        targetSdk = 34
+    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
@@ -43,6 +46,14 @@ dependencies {
     implementation(libs.androidx.camera.extensions)
     implementation(libs.androidx.camera.video)
     implementation(libs.google.mlkit.barcode.scanning)
+
+    implementation(libs.squareup.moshi)
+    ksp(libs.squareup.moshi.kotlin.codegen)
+    implementation(libs.androidx.datastore.preferences.core)
+    implementation(libs.androidx.datastore.preferences)
+    implementation(libs.google.accompanist.permissions)
+    implementation(libs.android.billing.client)
+
 
     implementation("com.google.dagger:hilt-android:2.57.1")
     ksp("com.google.dagger:hilt-android-compiler:2.57.1")

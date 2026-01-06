@@ -1,7 +1,6 @@
 package com.creative.qrcodescanner.ui.premium
 
 import android.app.Activity
-import android.util.Log
 import android.widget.Toast
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
@@ -44,16 +43,9 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.android.billingclient.api.BillingClient
-import com.android.billingclient.api.BillingClientStateListener
-import com.android.billingclient.api.BillingFlowParams
-import com.android.billingclient.api.BillingResult
-import com.android.billingclient.api.QueryProductDetailsParams
-import com.creative.qrcodescanner.R
 import com.creative.qrcodescanner.ui.shadow
 import com.creative.qrcodescanner.ui.theme.QRCodeScannerTheme
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
+import com.ym.learn.qr.R
 
 /**
  * Created by dan on 07/01/2024
